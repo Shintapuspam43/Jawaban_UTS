@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Jawaban UTS</title>
+ <!--Menggunkan CDN yang menyimpan kode Leaflet-->
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"
+   integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+   crossorigin=""/>
+
+ <!--Elemen JS-->
+ <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"
+   integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="
+   crossorigin="">
+</script>
+
+<!-- Membuat judul -->
+<div class="container-fluid p-3">
+    <h2 class="mb-3">                 
+        <center><span class="text-primary">Lokasi favorit di UGM</span></center>
+</div>
+
+<!-- Memanggil bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+    <script src="./bundle.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./Leaflet.GraphicScale.min.css">
+
+    <script src="./Leaflet.GraphicScale.min.js"></script>
+
+    
+<!-- Tampilan di google-->
+    <style>
+	#map {
+		height: calc(100vh - 60px);
+	}
+	</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+     
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button 
+	    class="btn btn-outline-success my-2 my-sm-0" 
+		onclick="cari()"
+		>
+		   Peta UGM
+	  </button>
+    </form>
+  </div>
+</nav>
+ <style>
+    html, body, section
+    {
+        position: relative;
+        height: 100%;
+        background-color: #2e2d2d;
+    }
+
+    html
+    {
+        scroll-behavior: smooth;
+    }
+
+    #map {
+    width: 1500px;
+    height:1500px;
+    } 
+ </style>
+
+</head>
+<body>
+    <center>
+        <div id="map"></div>
+    </center>
+
+
+<!--Menambahkan Basemap-->
+    <script>
+        var map = L.map('map',{
+        center: [-7.771193346850834, 110.37749979480012],
+        zoom: 18
+        });
+
+        var esri =
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA,USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS UserCommunity'
+        }).addTo(map);
+
+        var carto = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution:'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>&copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+            subdomains: 'abcd',
+            maxZoom: 18
+        });
+
+        var OSM = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+ 
+        L.marker([-7.769445676397312, 110.3837222948001])
+            .bindPopup('<a href ="https://maps.app.goo.gl/CfbEnx64K8EvG2418"><center><img src= "https://lh5.googleusercontent.com/p/AF1QipOU5kGKG2ynCpM15oSHmVdHvM1bp9qTcdNy-cpb=w408-h306-k-no" width="250px" height="150px" title="Gor Pancasila UGM" alt="Gor Pancasila UGM"><h4>GOR Pancasila</h4></center><p>Suatu fasilitas olahraga yang digunakan untuk UKM di UGM. GOR Pancasila terdiri dari hall, tribun penonton, Sekretariat Manajemen GOR, ruang ganti, loket tiket dan ruang VIP. Hall dapat digunakan untuk kegiatan oleharaga Bola Basket, Bola Voli, Bulutangkis, dan Futsal.</p>')
+            .addTo(map)
+        L.marker([-7.767475178748995, 110.37847322233932])
+            .bindPopup('<a href ="https://maps.app.goo.gl/FBMjMD2ebGFLDzTa8"><center><img src="https://lh5.googleusercontent.com/p/AF1QipM8be-SUDB5aJcZ5ZIWGXj-IhDQTn1wjf7G6YLM=w408-h544-k-no" width="250px" height="200px" title="Gedung Balairung UGM" alt="Gedung Balairung UGM"><h4>Gedung Pusat Universitas Gadjah Mada</h4></center><p>Balairung UGM adalah Gedung Pusat Universitas Gadjah Mada (UGM) yang merupakan bangunan modern pertama di Republik Indonesia. Bangunan yang diresmikan pada 19 Desember 1959 ini dikonsep sendiri oleh presiden pertama RI, Soekarno.</p>')
+            .addTo(map)
+        L.marker([-7.772970907000064, 110.37979687841593])
+            .bindPopup('<a href ="https://maps.app.goo.gl/wJXMGYoaBPCnbhNp6"><center><img src="https://lh5.googleusercontent.com/p/AF1QipMJgg7a2QrbySEw0MidVfDXvXazmuzi4DfFEBK4=w408-h306-k-no" width="250px" height="150px title="Masjid Kampus UGM" alt="Masjid Kampus UGM"><h4>Masjid Kampus UGM</h4></center><p>Maskam UGM merupakah salah satu pusat kegiatan keislaman di lingkungan Universitas Gadjah Mada. Sepanjang tahun, Maskam UGM banyak menyelenggarakan kegiatan, seperti kajian, diskusi, dan seminar, serta dialog publik yang menghadirkan tokoh-tokoh nasional dengan mengangkat tema mulai dari isu keislaman sampai isu nasional.</p>')
+            .addTo(map)
+        L.marker([-7.76568370956295, 110.37381007945785])
+            .bindPopup('<a href ="https://maps.app.goo.gl/rtT4o96ErwjKsbLE6"><center><img src= "https://lh5.googleusercontent.com/p/AF1QipPEYz6LZthdQ0aR047R-oTvlNRmykj5Ggqbxl73=w408-h306-k-no" width="250px" height="150px" title="Tugu Teknik UGM" alt="Tugu Teknik UGM"><h4>Tugu Teknik UGM</h4></center><p>Tugu Teknik yang berada di area masuk Fakultas Teknik UGM dibangun pada perayaan 50 tahun Pendidikan Tinggi Teknik, 17 Februari 1996. Desain tugu ini merupakan karya Gatot Suprihadi, mahasiswa jurusan Arsitektur UGM, yang mengalahkan 21 peserta lain dari kalangan arsitek, seniman dan profesional.</p>')
+            .addTo(map)
+        L.marker([-7.7699439249708755, 110.37792636781325])
+            .bindPopup('<a href ="https://maps.app.goo.gl/VuVxHZ6C6ELtdmUg8"><center><img src= "https://lh5.googleusercontent.com/p/AF1QipMF8hp6PihHVbislW8BGqdCQmiiHaEGrfrzUIDe=w426-h240-k-no" width="250px" height="150px" title="Grha Sabha Permana" alt="Grha Sabha Permana"><h4>Grha Sabha Permana</h4></center><p>Grha Sabha Pramana (disingkat GSP) adalah gedung auditorium utama milik Universitas Gadjah Mada (UGM) Yogyakarta. Gedung ini digunakan untuk berbagai kegiatan aktivitas akademika UGM, misalnya wisuda, rapat, dan penerimaan mahasiswa baru. Berada di Boulevard dan Gedung Pusat, Grha Sabha Pramana memiliki arsitektur gaya Mataram.</p>')
+            .addTo(map)
+    </script>
+</body>
+</html>

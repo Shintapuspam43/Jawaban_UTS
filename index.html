@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Jawaban UTS Shinta</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Times New Roman;
+}
+
+/* Membuat style pada header */
+header {
+  background-color: #1404f7;
+  padding: 1px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Membuat dua kolom/kotak untuk Sidebar dan Content*/
+nav {
+  float: left;
+  width: 20%;
+  background: #d9dff0;
+  height:600px;
+  padding: 5px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 80%;
+  background-color: #fafafa;
+  height:600px;
+}
+
+img {
+	float: right;
+    padding: 50px;
+    width: 45%;
+}
+
+/* Batas kolom antara sidebar dengan content */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Membuat style pada footer */
+footer {
+  background-color: #1404f7;
+  padding: 1px;
+  text-align: center;
+  color: white;
+}
+
+
+</style>
+</head>
+<body>
+
+<header>
+  <h2>Jawaban Ujian Tengah Semester</h2>
+  <h4>Praktikum SIG Web</h4>
+</header>
+
+<section>
+  <nav>
+    <ul>
+        <p><a href="http://teknikgeodesi.ugm.ac.id">Teknik Geodesi UGM</a></p>
+        <p><a href="PetaUTS.html">Lokasi Favorit di UGM</a></p>
+    </ul>
+  </nav>
+
+  <article>
+    <img src="geodesi.jpg" width="620" height="355">
+    <table style="width:20" border="1">
+      <tr> 
+          <td>Shinta Puspa Megawanti</td>
+          <td>20/456748/TK/50572</td>
+      </tr>
+     </table>
+  
+    <h3> Teknik Geodesi UGM </h3>
+    <p>Visi Program Studi Sarjana Teknik Geodesi FT-UGM adalah “Menjadi Program Studi Sarjana Teknik Geodesi kelas dunia yang unggul dan inovatif, berdedikasi untuk kepentingan bangsa dan kemanusiaan yang dijiwai oleh nilai-nilai budaya bangsa yang berlandaskan Pancasila sebagai ideologi negara”.</p>
+    <h3> Sistem Informasi Berbasis WEB </h3>
+    <p>Mata kuliah Sistem Informasi Geografi berbasis WEB ini merupakan matakuliah pilihan dengan bobot 2sks untuk matakuliah teori dan 1 sks untuk kelas praktikum</p>
+    <p><b>Materi yang dipelajari:</b></p>
+    <p>1. Pengantar SIG WEB</p>
+    <p>2. HTML dan CSS</p>
+    <p>3. <i>Javascript</i> sebagai bahasa <i>Client-side Scripting</i></p>
+    <p>4. <i>Bootsrap Framework</i></p>
+    <p>5. <i>LeafletJS</i></p>
+    <p>6. <i>Mobile</i> GIS dengan input dan mergin</p>
+  </article>
+  <footer>
+    <p>Copyright @Shinta Puspa M</p>
+  </footer>
+  <body>
+    <h5>Pengerjaan Selesai</h5>
+    <h5 style="color:orange;" align="right"></h5>
+    <div class="login">
+        <div id="error" class="alert alert-danger" role="alert"></div>
+        <form action="#" method="get" id="form">
+            <label>Nama:</label>
+            <input type="text" name="nama" placeholder="Masukkan Nama Anda"/><br>
+            <label>Password:</label>
+            <input type="password" name="password" placeholder="Masukkan Password Anda"/><br>
+            <input onclick="login()" type="button" value="Klik" class="tombol">
+        </form>
+    </div>
+   <script>
+ function login(){
+    var nama = document.forms["form"]["nama"].value;
+    var password = document.forms["form"]["password"].value;
+        if (nama == "Shinta Puspa Megawanti") {
+            alert("Masukkan nama anda!");
+            return false;
+        }
+         if (password == "Selesai") {
+            alert("Anda berhasil login!");
+            return false;
+         }
+         else{
+            alert("Password Salah!");
+            return false;
+         }
+
+ }
+  </section>
+
+</body>
+</html>
+
